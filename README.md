@@ -206,6 +206,6 @@ worth a look if you will need to implement custom behaviors.
 
 ## Live Example
 
-A working example of these files can be viewed at:
+A working example of this project in use can be viewed at:
 [benthielker.com/AShow](http://benthielker.com/AShow)
 
