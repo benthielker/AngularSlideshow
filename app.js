@@ -43,90 +43,6 @@ app.get('/', function(req,res) {
 app.get('/api/slides/:showId', function(req, res) {
 	console.log("Angular Slideshow app.get('/api/slides/:showId') req.params.showId:"+
 		req.params.showId);
-	/*
-	var slides_by_show = {
-		"example1" : [
-			{	
-				"index" : [0,0],
-				"content" : "Example1 Slide 1..."
-			},
-			{	
-				"index" : [1,0],
-				"content" : "Example1 Slide 2..."
-			},
-			{	
-				"index" : [2,0],
-				"content" : "Example1 Slide 3..."
-			}
-		],
-		"example2" : [
-			{	
-				"index" : [0,0],
-				"content" : "Example2 Slide 1..."
-			},
-			{	
-				"index" : [1,0],
-				"content" : "Example2 Slide 2..."
-			},
-			{	
-				"index" : [2,0],
-				"content" : "Example2 Slide 3..."
-			}
-		],
-		"example3" : [
-			{	
-				"index" : [0,0],
-				"content" : "Example3 Slide 1..."
-			},
-			{	
-				"index" : [0,1],
-				"content" : "Example3 Slide 2..."
-			},
-			{	
-				"index" : [0,2],
-				"content" : "Example3 Slide 3..."
-			}
-		],
-		"example4" : [
-			{	
-				"index" : [0,0],
-				"content" : "Example4 Slide 0,0..."
-			},
-			{	
-				"index" : [0,1],
-				"content" : "Example4 Slide 0,1..."
-			},
-			{	
-				"index" : [0,-1],
-				"content" : "Example4 Slide 0,-1..."
-			},
-			{	
-				"index" : [1,0],
-				"content" : "Example4 Slide 1,0..."
-			},
-			{	
-				"index" : [1,1],
-				"content" : "Example4 Slide 1,1..."
-			},
-			{	
-				"index" : [1,-1],
-				"content" : "Example4 Slide 1,-1..."
-			},
-			{	
-				"index" : [2,0],
-				"content" : "Example4 Slide 2,0..."
-			},
-			{	
-				"index" : [2,1],
-				"content" : "Example4 Slide 2,1..."
-			},
-			{	
-				"index" : [2,-1],
-				"content" : "Example4 Slide 2,-1..."
-			}
-		]
-	};
-	*/
 	
 	//
 	// For this example we're simply loading data from the json files in public/slides
@@ -141,6 +57,7 @@ app.get('/api/slides/:showId', function(req, res) {
 		fs.readFile(file, 'utf8', function(err,data) {
 			if (err) {
 				log("app.get('/api/slides/:showId') FS ERROR: "+err.message);
+				res.send([]);
 			} else {
 				data = JSON.parse(data);
 				res.send(data);

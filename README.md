@@ -190,7 +190,7 @@ as the index. This page contains fairly comprehensive examples with descriptions
 configurations.
 
 The 
-[gemHunter.html](https://github.com/benthielker/AngularSlideshow/blob/master/public/GemHunter.html)
+[GemHunter.html](https://github.com/benthielker/AngularSlideshow/blob/master/public/GemHunter.html)
 example is just a fun demonstration of what can be done with a 2d slideshow. Its source is
 worth a look if you will need to implement custom behaviors.
 
@@ -204,4 +204,8 @@ worth a look if you will need to implement custom behaviors.
         slides/         --> slide definition json files
 
 
+## Live Example
+
+A working example of these files can be viewed at:
+[benthielker.com/AShow](http://benthielker.com/AShow)
 
