@@ -1,11 +1,17 @@
 # Angular Slideshow
 
-A versatile slideshow presentation tool using jQuery and AngularJS.
-Intended to easily integrate with any Node and Angular based site.
+* A versatile slideshow presentation tool using
+[jQuery](http://jquery.com/)
+and
+[AngularJS](http://angularjs.org/).
 
-Can create typical linear looping auto-advancing slideshows arranged both horizontally and
-vertically, manually advanced shows via automatically generated controls, and or more
-complex 2d grid based shows with slides arranged both vertically and horizontally.
+* Intended to easily integrate with any
+[Node.js](http://nodejs.org/)
+site.
+
+* Can create typical linear looping auto-advancing slideshows arranged both horizontally
+and vertically, manually advanced shows via automatically generated controls, or more
+complex 2d grid-based shows with slides arranged both vertically and horizontally.
 
 
 ## Configured by markup
@@ -26,7 +32,7 @@ The above example is a manually advancing slideshow with horizontal looping, pag
 displayed, a half second transition duration, and dimensions of 300 x 150 pixels.
 **(NOTE: The show width and height should match the slides it will display.)**
 
-The below example is an auto-advancing slideshow...
+The example below configures an auto-advancing slideshow...
 ```html
 <div id='slideshow2'
   loopDimensions='1'
@@ -37,14 +43,15 @@ The below example is an auto-advancing slideshow...
 a-slideshow></div>
 ```
 If an `advanceDelay` greater than zero is configured for a slideshow *no navigation
-controls will be generated for it*. Note that the `loopDimensions` has been assigned a
-value of `1` instead of `0`. Unlike the previous example this is requesting *vertical*
-looping. That value is indicating the axis to loop.
+controls will be generated for it*. Note that the `loopDimensions` property has been
+assigned a value of `1` instead of `0`. Unlike the previous example this is requesting
+*vertical* looping. That value is actually indicating the axis to loop. (If no looping is
+needed, the `loopDimensions` attribute should not be included in the markup.)
 
-All slides in a show are assigned a 2d index. If you have a horizontally arranged show you
-can use simplified indexes such as `1`, `2` and `3`. These would be automatically
+All slides in a show are assigned a 2d index. When working with a horizontally arranged
+show simplified indexes such as `1`, `2` and `3` can be used. These would be automatically
 converted to 2d: `[1,0]`, `[2,0]` and `[3,0]`. However if the show's slides are vertically
-arranged their indexes would have to be `[0,1]`, `[0,2]` and `[0,3]`.
+arranged their indexes would instead have to be `[0,1]`, `[0,2]` and `[0,3]`.
 
 When dealing with a manually advancing slideshow, you will likely want to override the
 nav link labels. The following example demonstrates how that is done...
@@ -69,9 +76,9 @@ Here is the list of configuration options currently available for the slideshow 
 | Attribute           | Example Values      | Purpose
 | ---                 | ---                 | ---
 | transitionType      | `'fade'`, `'pan'`   | Forces all transitions to be of this type.
-| transitionDuration  | `'1000'`            | Specifies duration of transition animations.
+| transitionDuration  | `'1000'`            | Duration of transition animations in milliseconds.
 | loopDimensions      | `'0'`, `'[0,1]'`    | Index dimensions that should wrap-around.
-| advanceDelay        | `'5000'`            | Time to wait before advancing to next slide.
+| advanceDelay        | `'5000'`            | Milliseconds to wait before advancing to next slide.
 | advanceChange       | `'[1,0]'`, `'[0,1]'`| Change to apply to current index when advancing.
 | directionLabels     | `'{"left":"Prev"}'` | Custom labels to display for nav links.
 | showPageNumbers     | `'1'`, `'true'`     | If "truthy" display page numbers for slides.
