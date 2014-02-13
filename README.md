@@ -198,7 +198,8 @@ configurations.
 The 
 [GemHunter.html](https://github.com/benthielker/AngularSlideshow/blob/master/public/GemHunter.html)
 example is just a fun demonstration of what can be done with a 2d slideshow. Its source is
-worth a look to see how to implement custom behaviors.
+worth a look for an example of how to implement custom behaviors. It also makes for a nice
+demonstration of the fact that changes made to a slide are remembered.
 
 
 ## Directory Layout
