@@ -1,0 +1,76 @@
+/*
+Angular Slideshow styles...
+Named so as not to trample other style definitions.
+*/
+
+.AShow {
+}
+
+.AShow .AShowSlide {
+	position: absolute;
+	background: rgb(250,250,250);
+	border: 1px solid rgba(0,0,0, 0.1);
+	box-sizing: border-box;
+}
+.AShow .AShowSlide.AShowPlaceholder {
+	background: rgb(200,200,200);
+}
+
+.AShow .AShowSlides {
+	display: none;
+}
+
+.AShow .AShowFrame {
+	position: absolute;
+	overflow: hidden;
+	border: 1px solid rgba(0,0,0, 0.1);
+}
+
+.AShow .AShowFrame .AShowSlideHolder {
+	position: absolute;
+	top: 0;
+	left: 0;
+	overflow: visible;
+}
+
+
+.AShow .AShowNav {
+	position: absolute;
+	display: inline-block;
+	width: 3em;
+	height: 1em;
+	display: none;
+}
+
+.AShow .AShowNav.AShowNavUp,
+.AShow .AShowNav.AShowNavDown {
+	text-align: center;
+}
+
+.AShow .AShowNav.AShowNavUp {
+}
+
+.AShow .AShowNav.AShowNavDown {
+}
+
+.AShow .AShowNav.AShowNavLeft {
+	text-align: right;
+}
+
+.AShow .AShowNav.AShowNavRight {
+	text-align: left;
+}
+
+.AShow .AShowPageNumbers {
+	position: absolute;
+	bottom: 0;
+	text-align: center;
+}
+.AShow .AShowPageNumbers .AShowPageNumber {
+	margin: 1em 0.25em;
+	padding: 0.1em 0.25em;
+}
+.AShow .AShowPageNumbers .AShowPageNumber.AShowCurrent {
+	background: rgba(0,0,0, 0.1);
+	border-radius: 0.25em;
+}

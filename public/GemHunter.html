@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en" ng-app="AShow" ng-controller="slideshowCtrl">
+<head>
+	<meta charset="utf-8">
+	<title>Gem Hunter - an Angular Slideshow Production</title>
+	<link rel="stylesheet" href="css/AShow.css">
+	<script src="lib/jquery/jquery-1.10.2.min.js"></script>
+	<script src="lib/angular/angular.js"></script>
+	<script src="lib/angular/angular-route.js"></script>
+	<script src="lib/angular/angular-resource.js"></script>
+	<script src="AShow.js"></script>
+	<script src="AShowAngular.js"></script>
+	<style type='text/css'>
+		@font-face {
+			font-family: 'kaushan_scriptregular';
+			src: url('css/fonts/kaushan-script/kaushanscript-regular-webfont.eot');
+			src: url('css/fonts/kaushan-script/kaushanscript-regular-webfont.eot?#iefix') format('embedded-opentype'),
+				 url('css/fonts/kaushan-script/kaushanscript-regular-webfont.woff') format('woff'),
+				 url('css/fonts/kaushan-script/kaushanscript-regular-webfont.ttf') format('truetype'),
+				 url('css/fonts/kaushan-script/kaushanscript-regular-webfont.svg#kaushan_scriptregular') format('svg');
+			font-weight: normal;
+			font-style: normal;
+		}
+		
+		
+		.centered {
+			width: 770px;
+			margin: 0 auto;
+		}
+		
+		#header {
+			font-family: 'kaushan_scriptregular';
+			margin-bottom: 0.5em;
+			height: 90px;
+		}
+		#header h1 {
+			margin: 0;
+		}
+		#header h4 {
+			margin-top: 0;
+		}
+		
+		#showWrapper {
+			overflow: hidden;
+		}
+		
+		#inventory {
+			width: 400px;
+			height: 98px;
+			padding: 10px;
+			background: rgba(0,0,0, 0.1);
+			border: 0.1em solid rgba(0,0,0, 0.25);
+			border-radius: 0.5em;
+			margin-top: 2em;
+		}
+		#key {
+			content: url(images/maze_key.png);
+			width: 58px;
+			height: 98px;
+		}
+		#gems {
+			content: url(images/maze_gems.png);
+			width: 91px;
+			height: 77px;
+		}
+		
+		#footer {
+			text-align: center;
+			margin: 1em 0;
+		}
+		
+		.AShow {
+			margin: 0 auto;
+			font-family: sans-serif;
+		}
+		.AShow .AShowSlide {
+			border: none;
+		}
+		.AShow .AShowSlide > div {
+			background-position: top left;
+			background-repeat: no-repeat;
+			width: 640px;
+			height: 480px;
+			overflow: hidden;
+		}
+		.AShow .AShowSlide .dialog {
+			margin: 13em 10em;
+			padding: 1.5em 2.5em;
+			background: rgba(255,255,255, 0.9);
+			border: 0.1em rgba(0,0,0, 0.1);
+			border-radius: 0.5em;
+		}
+		.AShow .AShowSlide .collectable {
+			position: absolute;
+			cursor: pointer;
+		}
+		
+		#goal {
+			background: black;
+			color: white;
+			text-align: center;
+		}
+		#goal h1 {
+			font-family: 'kaushan_scriptregular';
+		}
+		#goal > h1 {
+			margin-top: 2em;
+			margin-bottom: 0;
+		}
+		
+	</style>
+</head>
+<body>
+	
+	<div id='header' class='centered'>
+		<h1>Gem Hunter</h1>
+		<h4>An Angular Slideshow Production</h4>
+	</div>
+	
+	<div id='showWrapper' class='centered'>
+		<div id='gemHunter'
+			transitionDuration='1000'
+			directionLabels='{"up":"North","right":"East","down":"South","left":"West"}'
+			style='width:640px; height:480px;'
+			a-slideshow></div>
+	</div>
+	<div id='inventory' class='centered'></div>
+	
+	<div id='footer'>
+		Source artwork credit: <a href='http://www.lostgarden.com/'>lostgarden</a>.
+	</div>
+	
+	<script type='text/javascript'>
+		
+		function dismiss(element) {
+			$(element).hide();
+		}
+		
+		function collect(element) {
+			$(element).remove();
+			$('#inventory').append(element);
+		}
+		
+		//
+		// Override methods for custom behavior.
+		//
+		AShow.oldMakeShowWithElement = AShow.MakeShowWithElement;
+		AShow.MakeShowWithElement = (function(element, props) {
+			var newShow = AShow.oldMakeShowWithElement(element, props);
+			if (newShow) {
+				// Need a custom currentSlide method that exhibits our custom behavior.
+				newShow.oldCurrentSlide = newShow.currentSlide;
+				newShow.currentSlide = (function(slide) {
+					var current_slide = this.oldCurrentSlide(slide);
+					if (typeof(slide)!='undefined') {
+						console.log("current room: "+slide.index);
+						if (slide.index.join()=='3,2') {
+							console.log(" door room");
+							// This is the room with the locked door.
+							if ($('#inventory').find('#key').length > 0) {
+								console.log(" player has key!");
+								// If player has the key, enable the 'North' link.
+								this.element.find('.AShowNavUp').attr('href','javascript:;').
+									click(function() {
+										$(this).parent('.AShow')[0].AShow.goToSlide([3,0]);
+									}).
+									show();
+							} else {
+								console.log(" player does not have key.");
+							}
+						} else
+						if (slide.index.join()=='3,0') {
+							// This is the exit room.
+							// Write score output.
+							var score = 300,
+								scoreOutput = "<h2>Your Score:</h2>"+
+									"<p>Escaped +100</p>"+
+									"<p>Has Key +100</p>";
+							if ($('#inventory').find('#gems').length > 0) {
+								score += 200;
+								scoreOutput += "<p>Has Gems +200</p>";
+							}
+							scoreOutput += "<h1>Total: "+score+"</h1>";
+							$('#score').html(scoreOutput);
+						}
+					}
+					return current_slide;
+				});
+			}
+			return newShow;
+		});
+		
+	</script>
+</body>
+</html>

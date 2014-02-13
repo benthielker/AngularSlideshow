@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en" ng-app="AShow" ng-controller="slideshowCtrl">
+<head>
+	<meta charset="utf-8">
+	<title>The Angular Slide Show - Examples</title>
+	<link rel="stylesheet" href="css/AShow.css">
+	<script src="lib/jquery/jquery-1.10.2.min.js"></script>
+	<script src="lib/angular/angular.js"></script>
+	<script src="lib/angular/angular-route.js"></script>
+	<script src="lib/angular/angular-resource.js"></script>
+	<script src="AShow.js"></script>
+	<script src="AShowAngular.js"></script>
+	<style type='text/css'>
+		
+		pre {
+			background: rgba(0,0,0,0.05);
+			padding: 0 1em;
+			display: inline-block;
+			border: 1px solid rgba(0,0,0,0.1);
+			border-radius: 0.3333em;
+		}
+		pre code .string {
+			color: brown;
+		}
+		pre code .tag {
+			color: steelblue;
+		}
+		
+		p > code {
+			font-size: 1.1em;
+			background: rgba(0,0,0, 0.05);
+			padding: 0.1em 0.2em;
+			border-radius: 0.25em;
+		}
+		
+		.example {
+			clear: both;
+			display: inline-block;
+			width: 100%;
+			padding: 2em 5em;
+			box-sizing: border-box;
+			border-style: solid;
+			border-width: 2px 0;
+			border-color: rgba(0,0,0,0.1);
+		}
+		.example:first-of-type {
+			border-top-width: 4px;
+		}
+		.example:last-of-type {
+			border-bottom-width: 4px;
+		}
+		
+	</style>
+</head>
+<body>
+	
+	<h1>Angular Slideshow Examples</h2>
+	
+	<div class='example'>
+		<div id='example1'
+			loopDimensions='0'
+			transitionDuration='750'
+			advanceDelay='4000'
+			advanceChange='1'
+			style='width:300px; height:150px; float:right; margin:1em 0 2em 3em'
+			a-slideshow></div>
+		
+		<h3>Horizontal Linear Slideshow with Auto-advance</h3>
+		<p>
+			This is an example of the most common type of slideshow. Slides are arranged
+			horizontally, automatically advance, and loop back around to be beginning when
+			when advancing beyond the last slide.
+		</p>
+		<pre><code>
+<span class='tag'>&lt;div</span> id=<span class='string'>'example1'</span>
+     loopDimensions=<span class='string'>'0'</span>
+     transitionDuration=<span class='string'>'750'</span>
+     advanceDelay=<span class='string'>'4000'</span>
+     advanceChange=<span class='string'>'1'</span>
+     style=<span class='string'>'float:right; 
+          width:300px; height:150px;
+          margin:1em 0 2em 3em'</span>
+     a-slideshow <span class='tag'>&gt;
+&lt;/div&gt;</span>
+		</code></pre>
+	</div>
+	
+	<div class='example'>
+		<div id='example2'
+			showPageNumbers='1'
+			transitionDuration='500'
+			style='width:300px; height:150px; float:right; margin:1em 0 2em 3em'
+			a-slideshow></div>
+		
+		<h3>Horizontal Linear Slideshow with Manual Navigation</h3>
+		<p>
+			This example is similar to the previous one, except that it does not 
+			auto-advance, and does not loop.
+			Lack of auto-advance configuration results in automatic generation of 
+			navigation buttons needed to access the slides present. In this case only
+			<i>Left</i> and <i>Right</i> buttons are needed, but <i>Up</i> and <i>Down</i>
+			buttons may also be created if applicable.
+		</p>
+		<p>
+			This show has also been configured to display page numbers via the
+			<code>show_page_numbers</code> attribute. This only needs to be provided a
+			value which equates to true in a boolean comparison. The page numbers indicate
+			the current page, and when clicked transition directly to the slide their
+			index attribute refers to.
+		</p>
+		<pre><code>
+<span class='tag'>&lt;div</span> id=<span class='string'>'example2'</span>
+     loopDimensions=<span class='string'>'0'</span>
+     transitionDuration=<span class='string'>'500'</span>
+     showPageNumbers=<span class='string'>'1'</span>
+     style=<span class='string'>'float:right; 
+          width:300px; height:150px;
+          margin:1em 0 2em 3em'</span>
+     a-slideshow <span class='tag'>&gt;
+&lt;/div&gt;</span>
+		</code></pre>
+	</div>
+	
+	<div class='example'>
+		<div id='example3'
+			loopDimensions='1'
+			transitionDuration='500'
+			directionLabels='{"up":"Prev","down":"Next"}'
+			style='width:300px; height:150px; float:right; margin:1em 0 2em 3em'
+			a-slideshow></div>
+		
+		<h3>Vertical Linear Slideshow with Manual Navigation</h3>
+		<p>
+			This example demonstrates vertically arranged slides, does not
+			auto-advance, and loops around the vertical axis.
+			You will notice that the navigation controls are now positioned on the top and
+			bottom instead of the left and right.
+		</p>
+		<p>
+			In this example the navigation labels have been overridden via the
+			<code>directionLabels</code> attribute, which must be provided in 
+			valid JSON format.
+		</p>
+		<pre><code>
+<span class='tag'>&lt;div</span> id=<span class='string'>'example3'</span>
+     loopDimensions=<span class='string'>'1'</span>
+     transitionDuration=<span class='string'>'500'</span>
+     directionLabels=<span class='string'>'{"up":"Prev","down":"Next"}'</span>
+     style=<span class='string'>'float:right; 
+          width:300px; height:150px;
+          margin:1em 0 2em 3em'</span>
+     a-slideshow <span class='tag'>&gt;
+&lt;/div&gt;</span>
+		</code></pre>
+	</div>
+	
+	<div class='example'>
+		<div id='example4'
+			transitionDuration='750'
+			loopDimensions='[0,1]'
+			directionLabels='{"up":"North","right":"East","down":"South","left":"West"}'
+			style='width:300px; height:150px; float:right; margin:1em 0 2em 3em'
+			a-slideshow></div>
+		
+		<h3>2d Grid with Looping</h3>
+		<p>
+			This example demonstrates the two-dimensional abilities of the Angular
+			Slideshow. Slides are arranged on a 3x3 grid which loops around both axes.
+			This requires providing an array of dimension indexes to the
+			<code>loopDimensions</code> attribute. (This helps explain the '0' and '1'
+			values specified for the previous slideshows. All slides have a 2-dimensional
+			index position, and the loop dimensions configuration indicates which axis to
+			loop.)
+		</p>
+		<p>
+			This example also overrides all potential direction labels.
+		</p>
+		<pre><code>
+<span class='tag'>&lt;div</span> id=<span class='string'>'example4'</span>
+     transitionDuration=<span class='string'>'750'</span>
+     loopDimensions=<span class='string'>'[0,1]'</span>
+     directionLabels=<span class='string'>'{"up":"North","right":"East","down":"South","left":"West"}'</span>
+     style=<span class='string'>'float:right;
+          width:300px; height:150px;
+          margin:1em 0 2em 3em'</span>
+     a-slideshow <span class='tag'>&gt;
+&lt;/div&gt;</span>
+		</code></pre>
+	</div>
+	
+	<div class='example'>
+		<p>
+			For a more elaborate example of what is possible with the 2d slideshow, check
+			out the <a href='gemHunter.html'>Gem Hunter</a> example.
+		</p>
+		<p>
+			View the source to see a working example of how to override the slideshow
+			methods to include custom behaviors.
+		</p>
+	</div>
+	
+</body>
+</html>
