@@ -53,8 +53,8 @@ show simplified indexes such as `1`, `2` and `3` can be used. These would be aut
 converted to 2d: `[1,0]`, `[2,0]` and `[3,0]`. However if the show's slides are vertically
 arranged their indexes would instead have to be `[0,1]`, `[0,2]` and `[0,3]`.
 
-When dealing with a manually advancing slideshow, you will likely want to override the
-nav link labels. The following example demonstrates how that is done...
+When dealing with a manually advancing slideshow, custom nav link labels will likely be
+desired. The following example demonstrates how that is achieved...
 ```html
 <div id='slideshow3'
   transitionDuration='750'
@@ -112,9 +112,9 @@ slideshow...
 ```
 
 This example more clearly demonstrates that the `content` assigned to each slide is
-`html`, so if your slide content will consist of images, you will need to populate their
-content with image tags. Note that the `index` properties of these slides vary along the
-y-axis, therefore these slides would belong to a vertically aligned show...
+`html`, so if a slideshow needs to consist of images, its slide's should likely be defined
+with image tags in their content. Note that the `index` properties of these slides vary
+along the y-axis, therefore these slides would belong to a vertically aligned show...
 ```json
 [
 	{	
@@ -185,8 +185,7 @@ These run the
 [AShowSpec.js](https://github.com/benthielker/AngularSlideshow/blob/master/public/AShowSpec.js)
 and 
 [AShowAngularSpec.js](https://github.com/benthielker/AngularSlideshow/blob/master/public/AShowAngularSpec.js)
-scripts respectively, which should make good starting points if you need to setup your
-own tests.
+scripts respectively.
 
 
 ## Examples
@@ -199,7 +198,7 @@ configurations.
 The 
 [GemHunter.html](https://github.com/benthielker/AngularSlideshow/blob/master/public/GemHunter.html)
 example is just a fun demonstration of what can be done with a 2d slideshow. Its source is
-worth a look if you will need to implement custom behaviors.
+worth a look to see how to implement custom behaviors.
 
 
 ## Directory Layout
