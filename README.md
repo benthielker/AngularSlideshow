@@ -64,7 +64,7 @@ direction label override object described by this parameter's value.
 
 
 ## Configuration Options
-Here is the full list of configuration options possible for the slideshow element...
+Here is the list of configuration options currently available for the slideshow element...
 
 | Attribute           | Example Values      | Purpose
 | ---                 | ---                 | ---
@@ -172,12 +172,12 @@ index...
 ## Testing
 
 Jasmine test runners are located in the `/public` directory so they can be served by node:
-[AShowSpectRunner.html](https://github.com/benthielker/Angular-Slideshow/blob/master/public/AShowSpectRunner.html), 
-[AShowAngularSpecRunner.html](https://github.com/benthielker/Angular-Slideshow/blob/master/public/AShowAngularSpecRunner.html).
+[AShowSpectRunner.html](https://github.com/benthielker/AngularSlideshow/blob/master/public/AShowSpectRunner.html), 
+[AShowAngularSpecRunner.html](https://github.com/benthielker/AngularSlideshow/blob/master/public/AShowAngularSpecRunner.html).
 These run the
-[AShowSpec.js](https://github.com/benthielker/Angular-Slideshow/blob/master/public/AShowSpec.js)
+[AShowSpec.js](https://github.com/benthielker/AngularSlideshow/blob/master/public/AShowSpec.js)
 and 
-[AShowAngularSpec.js](https://github.com/benthielker/Angular-Slideshow/blob/master/public/AShowAngularSpec.js)
+[AShowAngularSpec.js](https://github.com/benthielker/AngularSlideshow/blob/master/public/AShowAngularSpec.js)
 scripts respectively, which should make good starting points if you need to setup your
 own tests.
 
@@ -185,12 +185,12 @@ own tests.
 ## Examples
 
 The example node app serves 
-[example.html](https://github.com/benthielker/Angular-Slideshow/blob/master/public/example.html)
+[example.html](https://github.com/benthielker/AngularSlideshow/blob/master/public/example.html)
 as the index. This page contains fairly comprehensive examples with descriptions of their
 configurations.
 
 The 
-[gemHunter.html](https://github.com/benthielker/Angular-Slideshow/blob/master/public/GemHunter.html)
+[gemHunter.html](https://github.com/benthielker/AngularSlideshow/blob/master/public/GemHunter.html)
 example is just a fun demonstration of what can be done with a 2d slideshow. Its source is
 worth a look if you will need to implement custom behaviors.
 
