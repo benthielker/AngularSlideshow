@@ -11,7 +11,8 @@ complex 2d grid based shows with slides arranged both vertically and horizontall
 ## Configured by markup
 
 Shows are configured via attributes of elements on the page assigned the `a-slideshow`
-directive.
+directive. The id of the element will defined the `slideshow_id` property of the `AShow`
+instance created for it.
 
 ```html
 <div id='slideshow1'
@@ -21,7 +22,6 @@ directive.
   style='width:300px; height:150px;'
 a-slideshow></div>
 ```
-
 The above example is a manually advancing slideshow with horizontal looping, page numbers
 displayed, a half second transition duration, and dimensions of 300 x 150 pixels.
 **(NOTE: The show width and height should match the slides it will display.)**
@@ -63,12 +63,30 @@ navigation controls are `up`, `right`, `down`, and `left`. These should be the k
 direction label override object described by this parameter's value.
 
 
+## Configuration Options
+Here is the full list of configuration options possible for the slideshow element...
+
+| Attribute           | Example Values      | Purpose
+| ---                 | ---                 | ---
+| transitionType      | `'fade'`, `'pan'`   | Forces all transitions to be of this type.
+| transitionDuration  | `'1000'`            | Specifies duration of transition animations.
+| loopDimensions      | `'0'`, `'[0,1]'`    | Index dimensions that should wrap-around.
+| advanceDelay        | `'5000'`            | Time to wait before advancing to next slide.
+| advanceChange       | `'[1,0]'`, `'[0,1]'`| Change to apply to current index when advancing.
+| directionLabels     | `'{"left":"Prev"}'` | Custom labels to display for nav links.
+| showPageNumbers     | `'1'`, `'true'`     | If "truthy" display page numbers for slides.
+
+
 ## Slide definitions
 
 The `AShowAngular.js` file has examples for loading slides via an api call, a json file,
 or a hardcoded list defined in that file. (The later allows for testing when browsing the
-files locally.)
+files locally.) The `AShow.slideshow_id` property is used to identify the slides belonging
+to each slideshow instance. The example slide definition files provided with this project
+are located in the `/slides` directory and named `[slideshow_id].json`.
 
+The following demonstrates definition of very simple slides for a horizontally arranged
+slideshow...
 ```json
 [
 	{	
@@ -86,10 +104,10 @@ files locally.)
 ]
 ```
 
-Above is content of an example json file defining very simple slides for a horizontally
-arranged slideshow. (This data could also have been returned from an api call, or defined
-in a local variable.)
-
+This example more clearly demonstrates that the `content` assigned to each slide is
+`html`, so if your slide content will consist of images, you will need to populate their
+content with image tags. Note that the `index` properties of these slides vary along the
+y-axis, therefore these slides would belong to a vertically aligned show...
 ```json
 [
 	{	
@@ -107,11 +125,8 @@ in a local variable.)
 ]
 ```
 
-This example demonstrates that the `content` assigned to each slide is `html`, so if your
-slide content will consist of images, you will need to populate their content with image
-tags. Note that the `index` properties of these slides vary along the y-axis, therefore
-these slides would belong to a vertically aligned show.
-
+And finally this example describes a 3x3 grid of slides centered around the `[0,0]`
+index...
 ```json
 [
 	{	
@@ -153,33 +168,18 @@ these slides would belong to a vertically aligned show.
 ]
 ```
 
-That example describes a 3x3 grid of slides centered around the `[0,0]` index.
-
-
-## Configuration Options
-
-| Attribute           | Example Values      | Purpose
-| ---                 | ---                 | ---
-| transitionType      | `'fade'`, `'pan'`   | Forces all transitions to be of this type.
-| transitionDuration  | `'1000'`            | Specifies duration of transition animations.
-| loopDimensions      | `'0'`, `'[0,1]'`    | Index dimensions that should wrap-around.
-| advanceDelay        | `'5000'`            | Time to wait before advancing to next slide.
-| advanceChange       | `'[1,0]'`, `'[0,1]'`| Change to apply to current index when advancing.
-| directionLabels     | `'{"left":"Prev"}'` | Custom labels to display for nav links.
-| showPageNumbers     | `'1'`, `'true'`     | If "truthy" display page numbers for slides.
-
 
 ## Testing
 
-Jasmine test runners are located in the /public directory so they can be served by node:
+Jasmine test runners are located in the `/public` directory so they can be served by node:
 [AShowSpectRunner.html](https://github.com/benthielker/Angular-Slideshow/blob/master/public/AShowSpectRunner.html), 
 [AShowAngularSpecRunner.html](https://github.com/benthielker/Angular-Slideshow/blob/master/public/AShowAngularSpecRunner.html).
 These run the
 [AShowSpec.js](https://github.com/benthielker/Angular-Slideshow/blob/master/public/AShowSpec.js)
 and 
 [AShowAngularSpec.js](https://github.com/benthielker/Angular-Slideshow/blob/master/public/AShowAngularSpec.js)
-scripts respectively.
-These should make good starting points if you need to setup your own tests.
+scripts respectively, which should make good starting points if you need to setup your
+own tests.
 
 
 ## Examples
