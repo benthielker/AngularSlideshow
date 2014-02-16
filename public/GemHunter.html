@@ -30,7 +30,7 @@
 		
 		#header {
 			font-family: 'kaushan_scriptregular';
-			margin-bottom: 0.5em;
+			margin-bottom: -2.5em;
 			height: 90px;
 		}
 		#header h1 {
@@ -51,7 +51,6 @@
 			background: rgba(0,0,0, 0.1);
 			border: 0.1em solid rgba(0,0,0, 0.25);
 			border-radius: 0.5em;
-			margin-top: 2em;
 		}
 		#key {
 			content: url(images/maze_key.png);
@@ -84,7 +83,8 @@
 			overflow: hidden;
 		}
 		.AShow .AShowSlide .dialog {
-			margin: 13em 10em;
+			white-space: normal;
+			margin: 20%;
 			padding: 1.5em 2.5em;
 			background: rgba(255,255,255, 0.9);
 			border: 0.1em rgba(0,0,0, 0.1);
@@ -164,7 +164,7 @@
 									click(function() {
 										$(this).parent('.AShow')[0].AShow.goToSlide([3,0]);
 									}).
-									show();
+									css('visibility','visible');
 							} else {
 								console.log(" player does not have key.");
 							}

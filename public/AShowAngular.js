@@ -111,6 +111,7 @@ angular.module("AShow.services", [
 .factory("Slides", ["$resource", "$q",
 	function($resource, $q) {
 		
+		
 		//
 		// Lookup via api call...
 		// Comment out this section (including return) to use json file lookup instead.
@@ -221,6 +222,60 @@ angular.module("AShow.services", [
 						{	
 							"index" : [2,-1],
 							"content" : "Example4 Slide 2,-1..."
+						}
+					],
+					"gemHunter" : [
+						{
+							"index" : [0,0],
+							"content" : "<div style='background-image:url(images/maze_room_0_0.jpg)'><div class='dialog' onclick='dismiss(this)'><p>You have fallen into a labyrinth, and must find your way out.</p><p>You can tap items to collect them along the way.</p></div></div>"
+						},
+						{
+							"index" : [1,0],
+							"content" : "<img src='images/maze_room_1_0.jpg'/>"
+						},
+						{
+							"index" : [1,-1],
+							"content" : "<img src='images/maze_room_1_-1.jpg'/>"
+						},
+						{
+							"index" : [2,-1],
+							"content" : "<div style='background-image:url(images/maze_room_2_-1.jpg)'><img id='key' class='collectable' onclick='collect(this)' style='top:175px;left:310px'/></div>"
+						},
+						{
+							"index" : [1,1],
+							"content" : "<img src='images/maze_room_1_1.jpg'/>"
+						},
+						{
+							"index" : [2,1],
+							"content" : "<img src='images/maze_room_2_1.jpg'/>"
+						},
+						{
+							"index" : [1,2],
+							"content" : "<img src='images/maze_room_1_2.jpg'/>"
+						},
+						{
+							"index" : [0,2],
+							"content" : "<div style='background-image:url(images/maze_room_0_2.jpg)'><img id='gems' class='collectable' onclick='collect(this)' style='top:200px;left:175px'/></div>"
+						},
+						{
+							"index" : [1,3],
+							"content" : "<img src='images/maze_room_1_3.jpg'/>"
+						},
+						{
+							"index" : [2,3],
+							"content" : "<img src='images/maze_room_2_3.jpg'/>"
+						},
+						{
+							"index" : [3,3],
+							"content" : "<img src='images/maze_room_3_3.jpg'/>"
+						},
+						{
+							"index" : [3,2],
+							"content" : "<img src='images/maze_room_3_2.jpg'/>"
+						},
+						{
+							"index" : [3,0],
+							"content" : "<div id='goal'><h1>Congratulations!</h1><p>You have escaped the maze.</p><div id='score'></div></div>"
 						}
 					]
 				};

@@ -1,7 +1,7 @@
 [
 	{
 		"index" : [0,0],
-		"content" : "<div style='background-image:url(images/maze_room_0_0.jpg)'><div class='dialog' onclick='dismiss(this)'>You have fallen into a labyrinth, and must find your way out.<br/>You can tap items to collect them along the way.</div></div>"
+		"content" : "<div style='background-image:url(images/maze_room_0_0.jpg)'><div class='dialog' onclick='dismiss(this)'><p>You have fallen into a labyrinth, and must find your way out.</p><p>You can tap items to collect them along the way.</p></div></div>"
 	},
 	{
 		"index" : [1,0],

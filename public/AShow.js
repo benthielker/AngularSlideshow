@@ -139,7 +139,7 @@ AShow = (function(props) {
 			// update nav buttons if show doesn't auto-advance
 			if (!this.advance_delay) {
 				// start by hiding all nav buttons.
-				this.element.find('.AShowNav').hide();
+				this.element.find('.AShowNav').css('visibility','hidden');
 				// determine which buttons to show based on present adjacent slides.
 				var testDirections = [
 						"Up", "Right", "Down", "Left"
@@ -160,7 +160,7 @@ AShow = (function(props) {
 					}
 					// create nav link to existing adjacent slide.
 					if (testSlide) {
-						this.element.find('.AShowNav.AShowNav'+testDirection).show();
+						this.element.find('.AShowNav.AShowNav'+testDirection).css('visibility','visible');
 					}
 				}
 			}
@@ -447,39 +447,34 @@ AShow = (function(props) {
 			}
 			
 			// create requested buttons...
+			// (order of insert is important)
 			var fontSize = new Number($('body').css('font-size').replace('px','')).valueOf();
 			if (buttons_to_add.indexOf('up') >= 0) {
 				var html = "<a class='AShowNav AShowNavUp'>"+this.direction_labels['up']+"</a>",
-					href = "javascript:AShow.AShows["+this.AShowId+"].changeSlide([0,-1])",
-					left = (this.element[0].offsetLeft + Math.round((this.width-(fontSize*3))/2))+"px",
-					top = (this.element[0].offsetTop - fontSize)+"px";
-				var button = $(html).attr('href', href).css('left', left).css('top', top);
-				this.element.append(button);
-			}
-			if (buttons_to_add.indexOf('right') >= 0) {
-				var html = "<a class='AShowNav AShowNavRight'>"+this.direction_labels['right']+"</a>",
-					href = "javascript:AShow.AShows["+this.AShowId+"].changeSlide([1,0])",
-					left = (this.element[0].offsetLeft + this.width)+"px",
-					top = (this.element[0].offsetTop + Math.round((this.height+fontSize)/2))+"px";
-				var button = $(html).attr('href', href).css('left', left).css('top', top);
-				this.element.append(button);
-			}
-			if (buttons_to_add.indexOf('down') >= 0) {
-				var html = "<a class='AShowNav AShowNavDown'>"+this.direction_labels['down']+"</a>",
-					href = "javascript:AShow.AShows["+this.AShowId+"].changeSlide([0,1])",
-					left = (this.element[0].offsetLeft + Math.round((this.width-(fontSize*3))/2))+"px",
-					top = (this.element[0].offsetTop + this.height)+"px";
-				var button = $(html).attr('href', href).css('left', left).css('top', top);
-				this.element.append(button);
+					href = "javascript:AShow.AShows["+this.AShowId+"].changeSlide([0,-1])";
+				var button = $(html).attr('href', href);
+				button.insertBefore(this.element.children('.AShowFrame'));
 			}
 			if (buttons_to_add.indexOf('left') >= 0) {
 				var html = "<a class='AShowNav AShowNavLeft'>"+this.direction_labels['left']+"</a>",
-					href = "javascript:AShow.AShows["+this.AShowId+"].changeSlide([-1,0])",
-					left = (this.element[0].offsetLeft + (fontSize * -3))+"px",
-					top = (this.element[0].offsetTop + Math.round((this.height+fontSize)/2))+"px";
-				var button = $(html).attr('href', href).css('left', left).css('top', top);
-				this.element.append(button);
+					href = "javascript:AShow.AShows["+this.AShowId+"].changeSlide([-1,0])";
+				var button = $(html).attr('href', href);
+				button.insertBefore(this.element.children('.AShowFrame'));
 			}
+			
+			if (buttons_to_add.indexOf('down') >= 0) {
+				var html = "<a class='AShowNav AShowNavDown'>"+this.direction_labels['down']+"</a>",
+					href = "javascript:AShow.AShows["+this.AShowId+"].changeSlide([0,1])";
+				var button = $(html).attr('href', href);
+				button.insertAfter(this.element.children('.AShowFrame'));
+			}
+			if (buttons_to_add.indexOf('right') >= 0) {
+				var html = "<a class='AShowNav AShowNavRight'>"+this.direction_labels['right']+"</a>",
+					href = "javascript:AShow.AShows["+this.AShowId+"].changeSlide([1,0])";
+				var button = $(html).attr('href', href);
+				button.insertAfter(this.element.children('.AShowFrame'));
+			}
+			
 			
 			
 			// create page number buttons if requested by configuration.
@@ -489,7 +484,8 @@ AShow = (function(props) {
 				if (gd < 0) gd = (horizontal_space > vertical_space) ? 0 : 1;
 				
 				// create page number holder.
-				var pageNumberHolder = $("<div class='AShowPageNumbers' style='width:"+this.width+"px'></div>");
+				//var pageNumberHolder = $("<div class='AShowPageNumbers' style='width:"+this.width+"px'></div>");
+				var pageNumberHolder = $("<div class='AShowPageNumbers'></div>");
 				// create page numbers
 				var first_page_number = this.min_index[gd],
 					last_page_number = this.max_index[gd];
@@ -540,9 +536,11 @@ AShow = (function(props) {
 		
 		if (width) {
 			this.width = width;
+			this.element.css('width','');
 		}
 		if (height) {
 			this.height = height;
+			this.element.css('height','');
 		}
 		if (slideshow_id) {
 			this.slideshow_id = slideshow_id;

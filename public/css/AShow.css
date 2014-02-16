@@ -4,6 +4,8 @@ Named so as not to trample other style definitions.
 */
 
 .AShow {
+	white-space: nowrap;
+	/* NOTE: do not apply width & height to this item */
 }
 
 .AShow .AShowSlide {
@@ -21,8 +23,10 @@ Named so as not to trample other style definitions.
 }
 
 .AShow .AShowFrame {
-	position: absolute;
+	position: relative;
+	display: inline-block;
 	overflow: hidden;
+	vertical-align: middle;
 	border: 1px solid rgba(0,0,0, 0.1);
 }
 
@@ -35,17 +39,23 @@ Named so as not to trample other style definitions.
 
 
 .AShow .AShowNav {
-	position: absolute;
-	display: inline-block;
-	width: 3em;
-	height: 1em;
-	display: none;
+	visibility: hidden;
 }
 
 .AShow .AShowNav.AShowNavUp,
 .AShow .AShowNav.AShowNavDown {
+	display: block;
 	text-align: center;
+	margin: 0.5em 0;
 }
+
+.AShow .AShowNav.AShowNavLeft,
+.AShow .AShowNav.AShowNavRight {
+	display: inline-block;
+	margin: 0 0.5em;
+	vertical-align: middle;
+}
+
 
 .AShow .AShowNav.AShowNavUp {
 }
@@ -62,9 +72,9 @@ Named so as not to trample other style definitions.
 }
 
 .AShow .AShowPageNumbers {
-	position: absolute;
-	bottom: 0;
+	display: block;
 	text-align: center;
+	margin: 0.5em;
 }
 .AShow .AShowPageNumbers .AShowPageNumber {
 	margin: 1em 0.25em;
