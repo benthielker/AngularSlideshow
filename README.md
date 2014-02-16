@@ -179,7 +179,7 @@ index...
 ## Testing
 
 Jasmine test runners are located in the `/public` directory so they can be served by node:
-[AShowSpectRunner.html](https://github.com/benthielker/AngularSlideshow/blob/master/public/AShowSpectRunner.html), 
+[AShowSpecRunner.html](https://github.com/benthielker/AngularSlideshow/blob/master/public/AShowSpecRunner.html), 
 [AShowAngularSpecRunner.html](https://github.com/benthielker/AngularSlideshow/blob/master/public/AShowAngularSpecRunner.html).
 These run the
 [AShowSpec.js](https://github.com/benthielker/AngularSlideshow/blob/master/public/AShowSpec.js)
