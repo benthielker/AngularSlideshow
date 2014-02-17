@@ -82,8 +82,8 @@ describe("AShowAngular", function() {
 				
 				waitsFor(function() {
 					return show.slides.length > 0;
-				}, "should have finished loading slides",
-				2000);
+				}, "slides to finished loading",
+				5000);
 				
 				runs(function() {
 					expect(show.slidesByIndex).toBeTruthy();
