@@ -13,7 +13,7 @@
 	},
 	{
 		"index" : [2,-1],
-		"content" : "<div style='background-image:url(images/maze_room_2_-1.jpg)'><img id='key' class='collectable' onclick='collect(this)' style='top:175px;left:310px'/></div>"
+		"content" : "<div style='background-image:url(images/maze_room_2_-1.jpg)'><img id='key' class='collectable' onclick='collect(this)' style='top:17.5em;left:31em'/></div>"
 	},
 	{
 		"index" : [1,1],
@@ -29,7 +29,7 @@
 	},
 	{
 		"index" : [0,2],
-		"content" : "<div style='background-image:url(images/maze_room_0_2.jpg)'><img id='gems' class='collectable' onclick='collect(this)' style='top:200px;left:175px'/></div>"
+		"content" : "<div style='background-image:url(images/maze_room_0_2.jpg)'><img id='gems' class='collectable' onclick='collect(this)' style='top:20em;left:17.5em'/></div>"
 	},
 	{
 		"index" : [1,3],
